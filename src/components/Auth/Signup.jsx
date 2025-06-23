@@ -29,7 +29,7 @@ const Signup = () => {
     } catch (err) {
       toast.dismiss();
       toast.error("Signup failed: " + (err.response?.data?.message || "Something went wrong"));
-      console.log("Signup error:", err);
+      console.log("Signup error:", err.response?.data);
     }
   };
 

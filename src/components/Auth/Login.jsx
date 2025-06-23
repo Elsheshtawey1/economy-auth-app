@@ -2,7 +2,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "../../validation/loginSchema";
-import axios from "../../api/axiosInstance";
+// import axios from "../../api/axiosInstance";
+import instance from "../../api/axiosInstance";
 import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import "../../Style/login.css";
@@ -21,7 +22,7 @@ const Login = () => {
   const onSubmit = async (formData) => {
     try {
       toast.loading("Logging in...");
-      const { data } = await axios.post("/auth/login", formData);
+      const { data } = await instance.post("/auth/login", formData);
       localStorage.setItem("token", data.token);
 
       toast.dismiss();

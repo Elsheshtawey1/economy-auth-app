@@ -13,7 +13,7 @@ const NotFound = () => (
           <br />
           Let's get you back to deliciousness!
         </p>
-        <Link to="/" className="notfound-btn" aria-label="Back to Home" tabIndex={0}>
+        <Link to="/profile" className="notfound-btn" aria-label="Back to Home" tabIndex={0}>
           Back to Home
         </Link>
       </div>
