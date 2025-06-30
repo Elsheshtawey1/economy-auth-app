@@ -5,23 +5,17 @@ import Profile from "./pages/Profile";
 import ForgotPassword from "./components/Auth/ForgotPassword";
 import ResetPassword from "./components/Auth/ResetPassword";
 import ProtectedRoute from "./components/ProtectedRoute";
-import CustomToaster from "./components/CustomToaster";
 import NotFound from "./pages/NotFound";
 import Account from "./pages/Account";
-
-
 
 function App() {
   return (
     <>
-      <CustomToaster />
-
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Account" element={<Account />} />
-
         <Route
           path="/profile"
           element={
@@ -31,7 +25,7 @@ function App() {
           }
         />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} /> 
+        <Route path="/reset-password" element={<ResetPassword />} />
       </Routes>
     </>
   );

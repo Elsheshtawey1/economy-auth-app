@@ -1,12 +1,66 @@
-# React + Vite
+# Economy Auth App 🏦
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![React](https://img.shields.io/badge/React-v19-blue.svg)](https://reactjs.org)
+[![React Router](https://img.shields.io/badge/React%20Router-v7.6-orange.svg)](https://reactrouter.com)
+[![Vite](https://img.shields.io/badge/Vite-v6.3-green.svg)](https://vitejs.dev)
 
-Currently, two official plugins are available:
+## 📌 Project Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Economy Auth App** is a modern and secure web application for managing user authentication in an economic system. It offers a sleek and intuitive interface for handling login and registration processes, with full support for securely managing user data.
 
-## Expanding the ESLint configuration
+### Key Objectives:
+- Provide a robust and secure authentication system
+- Fully manage users and their data
+- Offer a modern, user-friendly interface
+- Support user verification and data protection
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Target Users:
+- System administrators and supervisors
+- Registered users within the economic system
+- Developers seeking a reliable authentication boilerplate
+
+## 🧱 Project Structure
+
+economy-auth-app/
+├── public/ # Static assets
+├── src/ # Source code
+│ ├── App.jsx # Main App component
+│ ├── Style/ # Global styles and theme
+│ ├── api/ # API service configurations
+│ ├── assets/ # Static assets (images, fonts)
+│ ├── components/ # Reusable React components
+│ ├── index.css # Global styles
+│ ├── main.jsx # Application entry point
+│ ├── pages/ # Application pages
+│ └── validation/ # Form validation schemas
+├── package.json # Project dependencies and scripts
+└── vite.config.js # Vite configuration
+
+## 📦 Libraries & Technologies Used
+
+### Core Libraries:
+- **React v19**: JavaScript library for building user interfaces
+- **React Router v7.6**: Declarative routing for React apps
+- **Axios**: Promise-based HTTP client for API requests
+- **React Hook Form**: Efficient and flexible form handling
+- **SweetAlert2**: Beautiful, customizable alert popups
+- **Zod**: Type-safe schema validation
+- **React Hot Toast**: Lightweight toast notifications
+
+### Development Tools:
+- **Vite**: Fast, modern build tool and dev server
+- **ESLint**: Linting tool to maintain code quality
+- **TypeScript**: Optional static typing for better code reliability
+
+## 💻 System Requirements
+
+- Node.js (v18 or newer)
+- npm or yarn
+- Modern web browser (Chrome, Firefox, Safari, etc.)
+
+## 🚀 Getting Started
+
+1. Install dependencies:
+```bash
+npm install
+# to run --npm run dev

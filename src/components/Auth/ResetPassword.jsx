@@ -1,40 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { resetPasswordSchema } from "../../validation/resetPasswordSchema";
 import axios from "../../api/axiosInstance";
 import { useLocation, useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
-import "../..//Style/reset-password.css";
+import Swal from "sweetalert2";
+import "../../Style/reset-password.css";
 
 const ResetPassword = () => {
   const { state } = useLocation();
   const email = state?.email || "";
   const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm({
     resolver: zodResolver(resetPasswordSchema),
   });
 
   const onSubmit = async (formData) => {
+    setIsSubmitting(true);
     try {
-      toast.loading("Resetting password...");
       await axios.post("/auth/forget-password", {
         email: email.trim(),
         code: formData.code,
         password: formData.password,
       });
-      toast.dismiss();
-      toast.success("Password reset successful! You can now log in.");
+
+      await Swal.fire({
+        icon: "success",
+        title: "Password reset successful!",
+        text: "You can now log in with your new password.",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+
       navigate("/login");
     } catch (err) {
-      toast.dismiss();
-      toast.error("Reset failed ❌");
+      Swal.fire({
+        icon: "error",
+        title: "Reset failed ❌",
+        text: err.response?.data?.message || "Something went wrong",
+      });
       console.log("Reset password error:", err.response?.data);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 

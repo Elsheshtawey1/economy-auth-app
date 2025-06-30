@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "../../api/axiosInstance";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import "../../Style/forgot-password.css";
 
 const ForgotPassword = () => {
@@ -13,11 +14,22 @@ const ForgotPassword = () => {
     setLoading(true);
     try {
       await axios.post("/auth/send-code", { email: email.trim() });
-      alert("Verification code has been sent to your email.");
+
+      await Swal.fire({
+        icon: "success",
+        title: "Verification code has been sent to your email.",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+
       navigate("/reset-password", { state: { email } });
     } catch (err) {
       console.log("Send code error:", err.response?.data);
-      alert("Failed to send code: " + (err.response?.data?.message || "Something went wrong"));
+      Swal.fire({
+        icon: "error",
+        title: "Failed to send code",
+        text: err.response?.data?.message || "Something went wrong",
+      });
     } finally {
       setLoading(false);
     }

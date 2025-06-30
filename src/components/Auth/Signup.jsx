@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupSchema } from "../../validation/signupSchema";
-// import axios from "../../api/axiosInstance";
 import instance from "../../api/axiosInstance";
 import { useNavigate, Link } from "react-router-dom";
-import toast from "react-hot-toast";
-import "../../Style/signup.css"; 
+import Swal from "sweetalert2";
+import "../../Style/signup.css";
 
 const Signup = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -20,16 +20,42 @@ const Signup = () => {
   });
 
   const onSubmit = async (formData) => {
+    setLoading(true);
     try {
-      toast.loading("Creating account...");
+      // إظهار رسالة انتظار بدون await علشان ما يوقفش الكود
+      Swal.fire({
+        title: "Creating account...",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
+
+      // إرسال البيانات
       await instance.post("/auth/signup", formData);
-      toast.dismiss();
-      toast.success("Account created successfully. You can now log in.");
+
+      Swal.close(); // غلق الـ loading
+
+      // رسالة النجاح
+      await Swal.fire({
+        icon: "success",
+        title: "Account created successfully",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+
       navigate("/login");
     } catch (err) {
-      toast.dismiss();
-      toast.error("Signup failed: " + (err.response?.data?.message || "Something went wrong"));
+      Swal.close(); // غلق الـ loading لو فيه خطأ
+      Swal.fire({
+        icon: "error",
+        title: "Signup failed",
+        text: err.response?.data?.message || "Something went wrong",
+      });
       console.log("Signup error:", err.response?.data);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -50,9 +76,10 @@ const Signup = () => {
         <input type="password" placeholder="Confirm Password" {...register("cPassword")} className="input-field" />
         {errors.cPassword && <p className="error-text">{errors.cPassword.message}</p>}
 
-        <button type="submit" className="submit-button">
-          Sign Up
+        <button type="submit" className="submit-button" disabled={loading}>
+          {loading ? "Creating..." : "Sign Up"}
         </button>
+
         <p className="form-link">
           Already have an account? <Link to="/login">Click here</Link>
         </p>
