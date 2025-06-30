@@ -22,7 +22,6 @@ const Signup = () => {
   const onSubmit = async (formData) => {
     setLoading(true);
     try {
-      // إظهار رسالة انتظار بدون await علشان ما يوقفش الكود
       Swal.fire({
         title: "Creating account...",
         allowOutsideClick: false,
@@ -32,12 +31,12 @@ const Signup = () => {
         },
       });
 
-      // إرسال البيانات
+
       await instance.post("/auth/signup", formData);
 
-      Swal.close(); // غلق الـ loading
+      Swal.close();
 
-      // رسالة النجاح
+
       await Swal.fire({
         icon: "success",
         title: "Account created successfully",
@@ -47,13 +46,13 @@ const Signup = () => {
 
       navigate("/login");
     } catch (err) {
-      Swal.close(); // غلق الـ loading لو فيه خطأ
+      Swal.close(); 
       Swal.fire({
         icon: "error",
         title: "Signup failed",
         text: err.response?.data?.message || "Something went wrong",
       });
-      console.log("Signup error:", err.response?.data);
+      // console.log("Signup error:", err.response?.data);
     } finally {
       setLoading(false);
     }

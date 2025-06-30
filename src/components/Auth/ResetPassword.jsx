@@ -45,7 +45,7 @@ const ResetPassword = () => {
         title: "Reset failed ❌",
         text: err.response?.data?.message || "Something went wrong",
       });
-      console.log("Reset password error:", err.response?.data);
+      console.log("Reset password error:", err.response);
     } finally {
       setIsSubmitting(false);
     }

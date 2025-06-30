@@ -18,13 +18,13 @@ const ForgotPassword = () => {
       await Swal.fire({
         icon: "success",
         title: "Verification code has been sent to your email.",
-        showConfirmButton: false,
+        showConfirmButton: false,        
         timer: 2000,
       });
 
       navigate("/reset-password", { state: { email } });
     } catch (err) {
-      console.log("Send code error:", err.response?.data);
+      // console.log("Send code error:", err.response?.data);
       Swal.fire({
         icon: "error",
         title: "Failed to send code",

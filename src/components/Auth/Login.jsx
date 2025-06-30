@@ -27,6 +27,7 @@ const Login = () => {
         title: "Logging in...",
         allowOutsideClick: false,
         allowEscapeKey: false,
+        showConfirmButton: false,
         didOpen: () => {
           Swal.showLoading();
         },
@@ -40,6 +41,7 @@ const Login = () => {
         icon: "success",
         title: "Login successful 🎉",
         showConfirmButton: false,
+        timerProgressBar: true,
         timer: 1500,
       });
 
@@ -51,7 +53,7 @@ const Login = () => {
         title: "Login failed",
         text: "Email or password is incorrect ❌",
       });
-      console.log("Login error:", err.response?.data);
+      console.log("Login error:", err.response);
     } finally {
       setLoading(false);
     }
