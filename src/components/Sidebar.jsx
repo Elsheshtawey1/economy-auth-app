@@ -1,66 +1,40 @@
 import React, { useState } from "react";
-import { FaHome, FaWallet, FaMoneyBillWave, FaPiggyBank, FaChartLine, FaUserCog, FaSignOutAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import "../Style/Sidebar.css"; 
+import { HashLink } from "react-router-hash-link";
+import { FaBars } from "react-icons/fa";
+import "../Style/Sidebar.css";
 
-const Sidebar = ({ onLogout }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+const Sidebar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <div className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
-      <div className="toggle-btn" onClick={() => setIsCollapsed(!isCollapsed)}>
-        {isCollapsed ? "»" : "«"}
-      </div>
-
+    <nav className="main-navbar">
       <div className="logo">
-        <img src="/vite.svg" alt="Logo" />
+        <img src="/21024940-Media-article-1 1 logo.svg" alt="Family Logo" loading="lazy" className="logo" />
       </div>
 
-      <ul className="menu">
+      <div className="menu-toggle" onClick={toggleMenu}>
+        <FaBars />
+      </div>
+
+      <ul className={`nav-links ${isOpen ? "open" : ""}`}>
         <li>
-          <NavLink to="/profile">
-            <FaHome />
-            {!isCollapsed && <span>Dashboard</span>}
+          <NavLink to="/profile" className={({ isActive }) => (isActive ? "active" : "")}>
+            Home
           </NavLink>
         </li>
         <li>
-          <NavLink to="/budgets">
-            <FaWallet />
-            {!isCollapsed && <span>Budgets</span>}
-          </NavLink>
+          <NavLink to="/account">Admin</NavLink>
         </li>
         <li>
-          <NavLink to="/expenses">
-            <FaMoneyBillWave />
-            {!isCollapsed && <span>Expenses</span>}
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/income">
-            <FaPiggyBank />
-            {!isCollapsed && <span>Income</span>}
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/analytics">
-            <FaChartLine />
-            {!isCollapsed && <span>Analytics</span>}
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/account">
-            <FaUserCog />
-            {!isCollapsed && <span>Account</span>}
-          </NavLink>
-        </li>
-        <li onClick={onLogout}>
-          <div className="logout-link">
-            <FaSignOutAlt />
-            {!isCollapsed && <span>Logout</span>}
-          </div>
+          <HashLink smooth to="/account#add-file">
+            Add File
+          </HashLink>
         </li>
       </ul>
-    </div>
+    </nav>
   );
 };
 

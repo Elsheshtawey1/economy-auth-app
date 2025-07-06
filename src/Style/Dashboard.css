@@ -1,0 +1,96 @@
+/* General Reset */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  padding: 2rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Main Title */
+.dashboard-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+/* Subtitles */
+.dashboard-subtitle {
+  font-size: 1.25rem;
+  margin: 2rem 0 1rem;
+  color: var(--accent-color);
+}
+
+/* Grid Layout for Cards */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+/* Individual Card */
+.dashboard-card {
+  background-color: var(--background-light);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  background-color: var(--hover-color);
+}
+
+/* Card Titles */
+.dashboard-card h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: var(--secondary-color);
+}
+
+/* Card Values */
+.dashboard-card p {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+/* Categories List */
+.dashboard-list {
+  list-style: none;
+  padding-left: 1rem;
+  margin: 0;
+}
+
+.dashboard-list li {
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+/* Chart Container */
+.dashboard-chart {
+  margin: 2rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Loading & Error States */
+.dashboard-loading,
+.dashboard-error {
+  padding: 2rem;
+  font-size: 1.25rem;
+  color: var(--error-color);
+  text-align: center;
+}

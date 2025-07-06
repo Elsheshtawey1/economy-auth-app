@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "../api/axiosInstance";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "../components/Sidebar"; 
-import "../Style/Profile.css";
+import Sidebar from "../components/Sidebar";
 import Dashboard from "../components/Dashboard";
+import Loader from "../components/Loader";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -23,7 +23,9 @@ const Profile = () => {
     navigate("/login");
   };
 
-  if (!user) return <p>Loading profile...</p>;
+  if (!user) return <div>
+    <Loader />
+  </div>;
 
   return (
     <div className="profile-grid">
@@ -33,29 +35,6 @@ const Profile = () => {
 
       <div className="main-section">
         <Dashboard />
-      </div>
-
-      <div className="right-sidebar">
-        <div className="profile-card hide-on-mobile">
-          <h1 className="profile-heading">User Profile</h1>
-
-          <img src="/undraw_developer-avatar_f6ac.svg" alt="User Avatar" className="profile-image" />
-
-          <h2>{user.fullName}</h2>
-
-          <div className="profile-info">
-            <p>
-              <strong>Email:</strong> {user.email}
-            </p>
-            <p>
-              <strong>Role:</strong> {user.role || "Admin"}
-            </p>
-          </div>
-
-          <button onClick={handleLogout} className="logout-button">
-            Logout
-          </button>
-        </div>
       </div>
     </div>
   );

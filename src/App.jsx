@@ -12,10 +12,9 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/Account" element={<Account />} />
+        <Route path="/account" element={<Account />} />
         <Route
           path="/profile"
           element={
@@ -26,6 +25,8 @@ function App() {
         />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

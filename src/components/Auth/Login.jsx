@@ -1,3 +1,4 @@
+// Login.jsx
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -22,7 +23,6 @@ const Login = () => {
   const onSubmit = async (formData) => {
     setLoading(true);
     try {
-      // عرض Loader
       Swal.fire({
         title: "Logging in...",
         allowOutsideClick: false,
@@ -61,6 +61,7 @@ const Login = () => {
 
   return (
     <div className="auth-container">
+      <img src="/final logo 2.png" alt="Family Logo" className="form-logo-top" />
       <form onSubmit={handleSubmit(onSubmit)} className="auth-form">
         <h2 className="form-title">Login</h2>
 

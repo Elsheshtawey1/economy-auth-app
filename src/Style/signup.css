@@ -22,7 +22,10 @@
   font-size: 1.75rem;
   color: var(--primary-color);
 }
-
+.form-logo-top {
+  width: 400px;
+  margin-bottom: 1.5rem;
+}
 .input-field {
   width: 100%;
   padding: 0.75rem;
@@ -31,12 +34,15 @@
   border-radius: var(--border-radius);
   background-color: var(--input-bg);
   font-size: 1rem;
+  color: var(--text-color);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
   box-sizing: border-box;
 }
 
 .input-field:focus {
-  border-color: var(--primary-color);
+  border-color: var(--input-focus);
   outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
 }
 
 .submit-button {

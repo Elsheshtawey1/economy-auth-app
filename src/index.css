@@ -1,21 +1,46 @@
-
-:root {
-  --primary-color: #4f46e5;
-  --secondary-color: #6366f1;
-  --background-color: #f9fafb;
-  --background-color2: #fff;
-  --input-bg: #fff;
-  --input-border: #d1d5db;
-  --text-color: #111827;
-  --error-color: #dc2626;
-  --link-color: var(--primary-color);
-  --button-color: var(--primary-color);
-  --button-text: #fff;
-  --border-radius: 8px;
-}
-* {
+*{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: sans-serif;
 }
+:root {
+  /* Primary Theme Colors */
+  --primary-color: #3f4c5c;
+  --secondary-color: #9ca3af;
+  --accent-color: #1d4ed8;
+  --link-color: #2563eb;
+
+  /* Backgrounds */
+  --background-color: #f4f4f4;
+  --background-light: #f9fafb;
+  --background-dark: #d1d5db;
+
+  /* Text Colors */
+  --text-color: #111827;
+  --heading-color: #ffffff;
+  --white-color: #ffffff;
+
+  /* States and Effects */
+  --hover-color: #e3f2fd;
+  --active-color: #d0e9ff;
+  --error-color: #dc2626;
+
+  /* Borders & Radius */
+  --border-radius: 8px;
+  --input-border: #cbd5e1;
+
+  /* Inputs */
+  --input-bg: #f3f4f6;
+  --input-focus: #3b82f6;
+
+  /* Buttons */
+  --button-color: #1d4ed8;
+  --button-text: #ffffff;
+
+  /* Charts & Visuals */
+  --chart-orange: #f59e0b;
+  --chart-purple: #8b5cf6;
+  --chart-pink: #ec4899;
+}
+  /* Shadows */

@@ -1,23 +1,32 @@
+/* login.css */
 .auth-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 2rem;
   min-height: 100vh;
+  background: linear-gradient(135deg, #9098A2, #A5ABB3);
+  overflow: hidden;
+}
+
+.form-logo-top {
+  width: 400px;
+  margin-bottom: 1.5rem;
 }
 
 .auth-form {
   background-color: var(--background-color2);
-    padding: 2rem;
+  padding: 2rem;
   border-radius: var(--border-radius);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
   width: 100%;
   max-width: 400px;
   box-sizing: border-box;
+  text-align: center;
 }
 
 .form-title {
-  text-align: center;
   margin-bottom: 1.5rem;
   font-size: 1.75rem;
   color: var(--primary-color);
@@ -31,12 +40,15 @@
   border-radius: var(--border-radius);
   background-color: var(--input-bg);
   font-size: 1rem;
+  color: var(--text-color);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
   box-sizing: border-box;
 }
 
 .input-field:focus {
-  border-color: var(--primary-color);
+  border-color: var(--input-focus);
   outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
 }
 
 .submit-button {
@@ -52,7 +64,12 @@
 }
 
 .submit-button:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--accent-color);
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .error-text {
@@ -71,8 +88,10 @@
 .form-link a {
   color: var(--link-color);
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .form-link a:hover {
   text-decoration: underline;
+  color: var(--accent-color);
 }
