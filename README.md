@@ -19,22 +19,26 @@
 - Registered users within the economic system
 - Developers seeking a reliable authentication boilerplate
 
-## 🧱 Project Structure
 
-economy-auth-app/
-├── public/ # Static assets
-├── src/ # Source code
-│ ├── App.jsx # Main App component
-│ ├── Style/ # Global styles and theme
-│ ├── api/ # API service configurations
-│ ├── assets/ # Static assets (images, fonts)
-│ ├── components/ # Reusable React components
-│ ├── index.css # Global styles
-│ ├── main.jsx # Application entry point
-│ ├── pages/ # Application pages
-│ └── validation/ # Form validation schemas
-├── package.json # Project dependencies and scripts
-└── vite.config.js # Vite configuration
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React 19**: Modern UI library
+- **React Router DOM**: Client-side routing
+- **Recharts**: Data visualization
+- **React Icons**: Icon library
+- **SweetAlert2**: Beautiful alerts
+- **React Hot Toast**: Toast notifications
+- **React Hook Form**: Form handling
+- **Zod**: Schema validation
+- **@tanstack/react-query**: Data fetching
+- **Axios**: HTTP client
+
+### Development Tools
+- **Vite**: Modern build tool
+- **ESLint**: Code linting
+- **TypeScript**: Type checking
 
 ## 📦 Libraries & Technologies Used
 
