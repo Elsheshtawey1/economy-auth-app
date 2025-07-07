@@ -43,7 +43,7 @@ function UploadFile() {
   };
 
   return (
-    <div className="upload-container">
+    <div className="upload-container " id="upload-file">
       <h3 className="upload-title">Upload Price CSV File</h3>
       <form onSubmit={handleUpload} className="upload-form">
         <input type="file" accept=".csv" onChange={handleFileChange} className="upload-input" />

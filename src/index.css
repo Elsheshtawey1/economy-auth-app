@@ -4,6 +4,9 @@
   box-sizing: border-box;
   font-family: sans-serif;
 }
+body {
+  overflow-x: hidden;
+}
 :root {
   /* Primary Theme Colors */
   --primary-color: #3f4c5c;

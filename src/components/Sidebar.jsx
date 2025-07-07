@@ -1,13 +1,18 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import "../Style/Sidebar.css";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token"); 
+    navigate("/login");
+  };
 
   return (
     <nav className="main-navbar">
@@ -29,9 +34,12 @@ const Sidebar = () => {
           <NavLink to="/account">Admin</NavLink>
         </li>
         <li>
-          <HashLink smooth to="/account#add-file">
-            Add File
-          </HashLink>
+          <NavLink to="/UploadFile">Add File</NavLink>
+        </li>
+        <li>
+          <button onClick={handleLogout} className="logout-link">
+            Logout
+          </button>
         </li>
       </ul>
     </nav>

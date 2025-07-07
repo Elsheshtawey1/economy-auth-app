@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "../api/axiosInstance";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "../components/Sidebar";
 import "../Style/Account.css";
 import Loader from "../components/Loader";
 
@@ -20,36 +19,37 @@ function Account() {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/");
+    navigate("/login"); // أو "/" حسب ما تحب
   };
+
+  if (!user) {
+    return (
+      <div className="account-container">
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <div className="account-container">
-      <Sidebar />
-
       <div className="profile-wrapper account-card">
-        {!user ? (
-          <div>
-          <Loader />
-        </div>
-        ) : (
-          <div className="profile-card">
-            <h1 className="profile-heading">Admin Profile</h1>
-            <img src="/undraw_developer-avatar_f6ac.svg" alt="User Avatar" className="profile-image" />
-            <h2>{user.fullName}</h2>
-            <div className="profile-info">
-              <p>
-                <strong>Email:</strong> {user.email}
-              </p>
-              <p>
-                <strong>Role:</strong> {user.role || "admin"}
-              </p>
-            </div>
-            <button onClick={handleLogout} className="logout-button">
-              Logout
-            </button>
+        <div className="profile-card">
+          <h1 className="profile-heading">Admin Profile</h1>
+          <img src="/undraw_developer-avatar_f6ac.svg" alt="User Avatar" className="profile-image" />
+          <h2>{user.fullName}</h2>
+          <div className="profile-info">
+            <p>
+              <strong>Email:</strong> {user.email}
+            </p>
+            <p>
+              <strong>Role:</strong> {user.role || "admin"}
+            </p>
           </div>
-        )}
+
+          <button onClick={handleLogout} className="logout-button">
+            Logout
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,119 @@
+/* ===== Footer Layout ===== */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 50px 60px;
+  background-color: #dedede;
+  color: #333;
+  font-family: "Segoe UI", sans-serif;
+  border-top: 1px solid #ccc;
+}
+
+/* ===== Footer Column ===== */
+.footer-column {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* ===== Logo + Title ===== */
+.logo {
+  width: 100px;
+}
+
+.footer-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0;
+  color: #1d1d1d;
+}
+
+.footer-subtitle {
+  font-size: 14px;
+  color: #0a51b1;
+  margin-left: 5px;
+}
+
+.footer-description {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+
+/* ===== Footer Heading ===== */
+.footer-heading {
+  font-size: 16px;
+  font-weight: bold;
+  color: #0a51b1;
+  margin-bottom: 8px;
+}
+
+/* ===== Quick Links Navigation ===== */
+.footer-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-nav li {
+  margin: 0;
+}
+
+.footer-nav a {
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+  position: relative;
+  padding-left: 12px;
+  transition: color 0.3s ease;
+}
+
+.footer-nav a::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: #0a51b1;
+  font-weight: bold;
+}
+
+.footer-nav a:hover {
+  color: #0a51b1;
+  text-decoration: underline;
+}
+
+/* ===== Quote and Copyright ===== */
+.footer-quote {
+  font-style: italic;
+  color: #444;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.footer-copy {
+  font-size: 13px;
+  color: #888;
+  margin-top: 10px;
+}
+
+/* ===== Responsive (Tablet & Mobile) ===== */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+
+  .footer-column {
+    width: 100%;
+  }
+
+  .footer-nav a {
+    padding-left: 16px;
+  }
+}

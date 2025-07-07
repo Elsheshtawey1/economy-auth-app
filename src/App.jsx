@@ -7,24 +7,48 @@ import ResetPassword from "./components/Auth/ResetPassword";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NotFound from "./pages/NotFound";
 import Account from "./pages/Account";
+import UploadFile from "./components/UploadFile";
+import DashboardLayout from "./components/DashboardLayout";
 
 function App() {
   return (
     <>
       <Routes>
+
         <Route path="/" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/account" element={<Account />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+
+
         <Route
           path="/profile"
           element={
             <ProtectedRoute>
-              <Profile />
+              <DashboardLayout>
+                <Profile />
+              </DashboardLayout>
             </ProtectedRoute>
           }
         />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
+
+        <Route
+          path="/account"
+          element={
+            <DashboardLayout>
+              <Account />
+            </DashboardLayout>
+          }
+        />
+
+        <Route
+          path="/uploadfile"
+          element={
+            <DashboardLayout>
+              <UploadFile />
+            </DashboardLayout>
+          }
+        />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
