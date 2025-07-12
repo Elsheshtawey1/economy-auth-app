@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 import UploadFile from "./UploadFile";
 import "../Style/Dashboard.css";
@@ -6,34 +6,72 @@ import Loader from "./Loader";
 import Swal from "sweetalert2";
 import { useDashboardStats } from "../hooks/useDashboardStats";
 
+
 const COLORS = ["#1d4ed8", "#f59e0b", "#8b5cf6", "#ec4899", "#9ca3af"];
 
+// to extract the role from the JWT token stored in localStorage
+function getRoleFromToken() {
+  const token = localStorage.getItem("token");
+  if (!token) return null;
+
+  try {
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    return payload.role || null;
+  } catch (e) {
+    return null;
+  }
+}
+
 function Dashboard() {
+  const role = getRoleFromToken();
+  const [blocked, setBlocked] = useState(role !== "admin");
+
   const { data: stats, isLoading, isError } = useDashboardStats();
-  console.log(stats);
+
 
   useEffect(() => {
-    if (isError) {
+    if (blocked) {
       Swal.fire({
         title: "⚠️ Access Denied",
-        text: "You do not have permission to access this data. This is sensitive information intended for Admin users only.",
+        text: "Admins only. You are not authorized to view this page.",
         icon: "warning",
-        confirmButtonText: "OK",
-        customClass: {
-          confirmButton: "swal-button",
+        timer: 3000,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        didClose: () => {
+          window.location.href = "/";
         },
-      }).then(() => {
-        window.location.href = "/";
       });
     }
-  }, [isError]);
+  }, [blocked]);
 
-  if (isLoading)
+  // Show error alert if there's an error and the user is not blocked
+  useEffect(() => {
+    if (!blocked && isError) {
+      Swal.fire({
+        title: "⚠️ Access Denied",
+        text: "You do not have permission to access this data.",
+        icon: "warning",
+        timer: 3000,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        didClose: () => {
+          window.location.href = "/";
+        },
+      });
+    }
+  }, [isError, blocked]);
+
+
+  if (blocked || isLoading) {
     return (
       <div className="dashboard-loading">
         <Loader />
       </div>
     );
+  }
 
   if (!stats) return <div className="dashboard-error">No data available.</div>;
 
