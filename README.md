@@ -48,7 +48,7 @@ To run the project locally, follow these steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone <repository-url>
+    git clone <https://github.com/Elsheshtawey1/economy-auth-app.git>
     ```
 2.  **Install dependencies:**
     ```bash
